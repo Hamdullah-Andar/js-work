@@ -170,3 +170,25 @@ console.log(Object.values(user));
 console.log(Object.entries(user))
 console.log(user.hasOwnProperty("isLoggedIn"));
 console.log(user.hasOwnProperty("isLoggedInUser"));
+
+const course = {
+    coursename: "JS",
+    price: 9000,
+    courseInstructor: "Naweed"
+}
+
+const {courseInstructor: instructor} = course
+// console.log(courseInstructor)
+console.log(instructor) // we can further shorten the name as instructor
+
+// {
+//     "name": "Ahmad",
+//     "coursename": "JS",
+//     "price": "free"
+// }
+
+[
+    {},
+    {},
+    {}
+]
