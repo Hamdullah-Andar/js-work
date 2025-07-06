@@ -41,6 +41,7 @@ const a = [1, 2, 3];
 const b = [...a];
 b[0] = 100;
 console.log(a); // [1, 2, 3] ✅
+console.log(b); // [100, 2, 3] 
 
 // -----------------------------
 
@@ -49,6 +50,7 @@ const aa = [1, 2, [3, 4]];
 const bb = [...aa];
 bb[2].push(5);
 console.log(aa); // [1, 2, [3, 4, 5]] ❗
+console.log(bb); // [1, 2, [3, 4, 5]]
 
 
 const newArray = new Array(10); // creates an array of length 10 with empty slots
