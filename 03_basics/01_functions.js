@@ -43,3 +43,41 @@ function loginUserMessage(username = "Naweed"){
 // console.log(loginUserMessage("Ahmad")) // Ahmad just logged in
 // console.log(loginUserMessage("")) // just logged in
 console.log(loginUserMessage()) // undefined just logged in
+
+// function calculateCartPrice(num1){ // this parameter will get the first value in the list
+//     return num1
+// }
+
+// function calculateCartPrice(...num1){ // here the 3 dots are called the Rest Operator which accept multiple values
+//     return num1
+// }
+
+function calculateCartPrice(val1, val2, ...num1){ // here the val1 and valu1 will fist and second value and the Rest Operator will accept the rest of the values
+    return num1
+}
+
+console.log(calculateCartPrice(400, 399, 5000, 6000))
+
+const user = {
+    username: "Ahmad",
+    price: 594
+}
+
+function handleObject(anyObject){
+    console.log(`username is ${anyObject.username} and the price is ${anyObject.price}`)
+}
+
+// handleObject(user)
+handleObject({
+    username: "Salim",
+    price: 984
+})
+
+const newArray = [300, 6000, 5000, 7000]
+
+function returnThirdValue(acceptArray){
+    return acceptArray[2]
+}
+
+// console.log(returnThirdValue(newArray));
+console.log(returnThirdValue([400, 200, 100, 3400]));
