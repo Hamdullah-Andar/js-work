@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Learning</title>
+  </head>
+  <body>
+    <div class="bg-black">
+      <h1 id="title" class="heading">DOM learning</h1>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+
+
+    <p>console.dir(document) give us more details than console.log(document)</p>
+    <p>When we have text in a tag, we say that the tag has text node</p>
+    <p>When we have attributes in a tag, we say that the tag has attribute</p>
+    <p>
+      In the Above Diagram we have below Dom structure without the p's outside
+      div
+    </p>
+    <p>Window Object</p>
+    <p>Document</p>
+    <p>HTML</p>
+
+    <p>Head</p>
+    <p>Inside Head we have title</p>
+    <p>Inside title we have text node</p>
+    <p>Inside Head we have meta</p>
+    <p>Inside meta we have attribute</p>
+
+    <p>body</p>
+    <p>Inside body we have div</p>
+    <p>Inside div we have class attribute</p>
+
+    <p>Inside div we have h1</p>
+    <p>Inside h1 we have attribute</p>
+    <p>Inside h1 we have text node</p>
+
+    <p>Inside div we have p</p>
+    <p>Inside p we have text node</p>
+
+    <p>
+      We can have access to many method in document as
+      console.log(document.baseURI) console.log(document.links) etc
+    </p>
+
+    <p>
+      console.log(document.links) which give me HTMLCollection where
+      HTMLCollection, NodeCollection and Array they are not array they are
+      converted to array. as array property is not available on them
+    </p>
+
+    <!-- console.log(document) give us so many things like below -->
+    <!-- console.log(document.baseURI); -->
+    <!-- console.log(document.links); -->
+
+    <!-- docuemnt.links give us HTMLCollection which is not an array, but it can be converted to array
+    hence NodeCollection, HTMLCollection and Array are not arrays
+    but they can be converted to array using Array.from() or spread operator [...document.links] -->
+
+
+
+  <!-- HTMLCollection is like array but it is not an array, hence we can use some of array properties and methods like below -->
+
+    <p>
+      console.log(document.links[0].href); // gives the href of the first link
+    </p>
+    <p>
+      console.log(document.links.length); // gives the number of links in the document
+    </p>
+    <p>
+      console.log(document.links.item(0)); // gives the first link element
+    </p>
+    <p>
+      console.log(document.links.namedItem('linkName')); // gives the link with name 'linkName'
+    </p>
+
+    <p>We can also use forEach on HTMLCollection after converting it to array</p>   
+
+
+
+    
+    <!-- we can select and manipulate DOM elements using methods like below and more other similar: -->
+
+    <p>
+      document.querySelector('.bg-black') // selects the first element with class 'bg-black'
+    </p>
+    <p>
+      document.querySelectorAll('.bg-black') // selects all elements with class 'bg-black'
+    </p>
+      we can manipulate the DOM using methods like below:
+    <p>
+      document.createElement('div') // creates a new div element  
+    </p>
+    <p>
+      document.createTextNode('Hello World') // creates a new text node with 'Hello World'
+    </p>
+    <p>
+      document.getElementById('elementId') // selects the element with id 'elementId'
+    </p>
+    <p>
+      document.getElementsByClassName('className') // selects all elements with class 'className' 
+    </p>
+    <p>
+      document.getElementsByTagName('tagName') // selects all elements with tag name 'tagName'  
+    </p>
+
+
+    
+    <!-- we can change DOM Element style as below -->
+
+    <p>
+      document.querySelector('.bg-black').style.backgroundColor = 'blue'; // changes the background color of the first element with class 'bg-black' to blue
+    </p>
+    <p>
+      document.querySelector('.bg-black').style.color = 'white'; // changes the text color of the first element with class 'bg-black' to white
+    </p>
+      we can change the text of DOM as below:
+    <p>
+      document.querySelector('.heading').textContent = 'New Heading'; // changes the text of the first element with class 'heading' to 'New Heading'  
+    </p>
+  </body>
+</html>
