@@ -2,123 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>DOM Learning</title>
-    <style>
-      .bg-black {
-        background-color: #212121;
-        color: #fff;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
   </head>
-  <body class="bg-black">
-    <div>
-      <h1 id="title" class="heading">DOM learning <span style="display: none;">Text inside span</span></h1>
-      <h2>Lorem, ipsum.</h2>
-      <h2>Lorem, ipsum dolor.</h2>
-      <h2>Lorem ipsum dolor sit.</h2>
-      <p>Lorem ipsum dolor sit amet.</p>
-      <input type="password" name="" id="">
-
-      <ul>
-        <li class="list-item">One</li>
-        <li class="list-item">Two</li>
-        <li class="list-item">Three</li>
-        <li class="list-item">Four</li>
-      </ul>
+  <body style="background-color: #212121; color: #fff">
+    <div class="parent">
+        <!-- This is a comment  -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
     </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    // console.log(parent);
+    // console.log(parent.children);
+    // console.log(parent.children[0].innerText)
 
+    // for(let i = 0; i < parent.children.length; i++) { // loop through children
+    //   console.log(parent.children[i].innerText); // prints all days
+    // }
 
+    parent.children[1].style.color = "orange";
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
 
-    <!-- Notes from the console of Web Browser of this page -->
-     
-    <!-- document.getElementById('title') // This will return the element with id 'title'
-    document.getElementById('title').id // This will return 'title'
-    document.getElementById('title').className // This will return 'heading'
+    const dayOne = document.querySelector(".day");
+    // console.log(dayOne); // first day
+    // console.log(dayOne.parentElement); // parent of dayOne
+    // console.log(dayOne.nextElementSibling) // next sibling of dayOne
 
-    document.getElementById('title').class // this will return undefined as 'class' is not a property of the element
-    document.getElementById('title').classList // This will return the classList of the element, which is a DOMTokenList, DOMTokenList ['heading', value: 'heading']
-
-    document.getElementById('title').getAttribute('id') // This will return 'title'
-    document.getElementById('title').getAttribute('class') // This will return 'heading'
-
-    document.getElementById('title').setAttribute('class', 'new-heading') // This will change the class to 'new-heading', and it will replace the old class if there is one
-    document.getElementById('title').setAttribute('class', 'heading new-heading') // This will add a new class 'new-heading' to the existing class 'heading', we will have both classes now
-
-    const myTitle = document.getElementById('title'); // This will store the element with id 'title' in myTitle variable
-    myTitle.style.backgroundColor = 'red'; // This will change the background color of the element to red
-    myTitle.style.padding = '10px'; // This will add padding of 10px to the element
-    myTitle.style.borderRadius = '5px'; // This will add border radius of 5px to the element -->
-
-
-
-    <!-- Intersting Things are here  -->
-
-    <!-- myTitle.innerText; // This will return the text inside the element, which is 'DOM learning'
-    myTitle.textContent; // This will also return the text inside the element, which is 'DOM learning Text inside span', hidden text inside span is also included
-    myTitle.innerHTML; // This will return the HTML inside the element, which is 'DOM learning <span style="display: none;">Text inside span</span>'
-    myTitle.outerHTML; // This will return the HTML of the element including the element itself which is '<h1 id="title" class="heading">DOM learning <span style="display: none;">Text inside span</span></h1>' -->
-   
-
-    <!-- document.querySelector('h2') // This will return the first h2 element in the document which is 'Lorem, ipsum.'
-    document.querySelector('#title') // This will return the element with id 'title' which is '<h1 id="title" class="heading">DOM learning <span style="display: none;">Text inside span</span></h1>'
-    document.querySelector('.heading') // This will return the first element with class 'heading' which is '<h1 id="title" class="heading">DOM learning <span style="display: none;">Text inside span</span></h1>' -->
-
-    <!-- document.querySelector('input[type="password"]') // This will return the input element with type 'password' which is '<input type="password" name="" id="">' -->
-
-    <!-- const myUL = document.querySelector('ul'); // This will return the first ul element in the document which is '<ul><li>One</li><li>Two</li><li>Three</li></ul>'
-    const turnGreen = myUL.querySelector('li'); // This will return the first li element in the ul which is '<li>One</li>'
-    turnGreen.style.color = 'green'; // This will change the text color of the first li element to green
-    turnGreen.style.padding = '10px'; // This will add padding of 10px to the first li element
-    turnGreen.innerText; // This will return the text inside the first li element which is 'One'
-    turnGreen.innerText = "Changed Text"; // This will change the text inside the first li element to 'Changed Text' -->
-
-
-    <!-- querySelectorAll -->
-
-     <!-- docuemnt.querySelectorAll('li'); // This will return all li elements in the document which is NodeList(3) [li, li, li]
-     NodeList and HTMLCollection is not pure array, but we can convert it to array using Array.from() or spread operator [...NodeList] or [...HTMLCollection] -->
-
-    <!-- const myLiList = document.querySelectorAll('li'); // This will return all li elements in the document which is NodeList(3) [li, li, li]
-    myLiList.style.color = 'red'; // This will throw an error as NodeList is not an array, we cannot use style property on NodeList
-    as we have many li elements, we need to loop through each element to change the style or select a specific element as below
-    myLiList[0].style.color = 'red'; // This will change the text color of the first li element to red -->
-    <!-- myLiList.forEach(li => li.style.color = 'red'); // This will change the text color of all li elements to red -->
-
-
-    <!-- const myH1 = document.querySelectorAll('h1'); // This will return all h1 elements in the document which is NodeList(1) [h1]
-    myH1.style.color = 'blue'; // This will throw an error as NodeList is not an array, we cannot use style property on NodeList
-    if we have only one h1 element also we can not select as myH1.style.color = 'blue';
-    we need to select the first element as below
-    myH1[0].style.color = 'blue'; // This will change the text color of the first h1 element to blue -->
-
-
-    <!-- getElementsByClassName -->
-
-    <!-- const TempClassList = document.getElementByClassName('list-item'); // This will return all elements with class 'list-item' which is HTMLCollection(4) [li, li, li, li]
-    // HTMLCollection is not an array, but it can be converted to array using Array.from() or spread operator [...document.getElementsByClassName('list-item')]
-    // HTMLCollection is live collection, it will update automatically if we add or remove elements from the document
-    // HTMLCollection is different from NodeList, which is static collection, it will not update automatically if we add or remove elements from the document
-    // We have forEach in NodeList but not in HTMLCollection, so we need to convert it to array to use forEach -->
-
-    <!-- TempClassList.forEach((tempClass)=>{ tempClass.style.color = 'red'; }); // This will throw an error as HTMLCollection is not an array, we cannot use forEach on HTMLCollection
-    // We need to convert it to array first
-    Array.from(TempClassList).forEach((tempClass)=>{ tempClass.style.color = 'red'; }); // This will change the text color of all elements with class 'list-item' to red -->
-
-
-    <!-- Practice on Wikis page -->
-
-    <!-- const allH2 = docuement.querySelectorAll('h2'); // This will return all h2 elements in the document which is NodeList(3) [h2, h2, h2]
-    allH2[0].innerText; // This will return the text inside the first h2 element which is 'Lorem, ipsum.'
-    allH2[1].innerText; // This will return the text inside the second h2 element which is 'Lorem, ipsum dolor.'
-
-    const myliClasses = document.querySelectorAll('.list-item'); // This will return all elements with class 'list-item' which is NodeList(4) [li, li, li, li]
-    myliClasses[0].innerText; // This will return the text inside the first li element which is 'One'
-    myliClasses[1].innerText; // This will return the text inside the second li element which is 'Two'
-
-    myH2.forEach((h) => { h.style.color = 'blue'; }); // This will change the text color of all h2 elements to blue -->
-    <!-- myH2.forEach((h) => { h.style.color = 'blue'; h.style.backgroundColor = 'yellow'; h.innerText = 'Changed Text'; }); // This will change the text color of all h2 elements to blue, background color to yellow and text to 'Changed Text' -->
-
-    <body>
-    
-</body>
+    console.log("NODES: ", parent.childNodes); // all nodes including text nodes,
+    // single or multiple new line are counted as single text node
+  </script>
 </html>

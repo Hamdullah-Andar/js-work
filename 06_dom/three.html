@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    
+</body>
+<script>
+    const myDiv = document.createElement("div");
+    console.log(myDiv); // <div></div>
+    myDiv.className = "main"
+    // myDiv.id = "myId"
+    // myDiv.id = Math.random().toString(36).substring(2, 15); // Generates a random ID
+    // myDiv.id = "myId" + Math.floor(Math.random() * 1000); // Generates a random ID with a prefix
+    myDiv.id = Math.floor((Math.random() * 10) + 1); // Generates a random ID between 1 and 10
+    myDiv.setAttribute("title", "This is a div");
+    myDiv.style.backgroundColor = "green";
+    myDiv.style.padding = "20px";
+    // myDiv.innerText = "This is a div with random ID"; // Sets the text content of the div, it overrides the innerHTML
+    // or we can use createTextNode and append it to the div
+    const addText = document.createTextNode("This is a div with random ID");
+    myDiv.appendChild(addText); // Appends the text node to the div
+
+    document.body.appendChild(myDiv); // Appends the div to the body
+</script>
+</html>
