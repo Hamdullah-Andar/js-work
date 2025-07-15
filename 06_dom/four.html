@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName) {
+        const myListItem = document.createElement("li");
+        // console.log(myListItem); // <li></li>
+        myListItem.innerText = langName; // Set the text content of the list item
+        const languageUlList = document.querySelector(".language");
+        // console.log(languageUlList); // <ul class="language">...</ul>
+        languageUlList.appendChild(myListItem); // Append the new list item to the first child
+    }
+    addLanguage("Python");
+    addLanguage("Java");
+
+    // more optimized code
+    function addOptimizedLang(langName){
+        const li = document.createElement("li"); 
+        li.appendChild(document.createTextNode(langName)); // Create a text node and append it to the list item 
+        document.querySelector(".language").appendChild(li); // Append the list item to the language list
+    }
+
+    addOptimizedLang("C++");
+    addOptimizedLang("C#");
+
+    // To Edit DOM elements
+    // document.querySelector(".language").children[0].innerText = "JavaScript"; // Change the first list item to JavaScript
+
+    const updatedLang = document.querySelector("li:nth-child(4)")
+    // console.log(updatedLang); // <li>C++</li>
+    const newLi = document.createElement("li");
+    // console.log(newLi); // <li></li>
+    const newLiText = newLi.textContent = "TypeScript"; // Set the text content of the new list item
+    // console.log(newLiText); // TypeScript
+    updatedLang.replaceWith(newLi); // Replace the fourth list item with the new list item
+
+    // another way of editing DOM elements
+    const lastLang = document.querySelector("li:last-child");
+    // console.log(lastLang); // <li>C#</li>
+    const replacedLang = lastLang.outerHTML = "<li>Ruby</li>"
+    // console.log(replacedLang); // <li>Ruby</li>
+
+
+    // To remove DOM elements
+    const toRemove = document.querySelector("li:last-child");
+    console.log(toRemove); // <li>Ruby</li>
+    toRemove.remove(); // Remove the last list item
+
+
+</script>
+</html>
