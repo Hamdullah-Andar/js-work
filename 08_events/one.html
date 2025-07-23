@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing Images</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="phtoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // Normallay all event in javascript run sequentially
+    // but there are some exception which we will discuss here
+
+    // Javascript is sequentially run language
+    // one of them is Event which happens on some event which it occuers
+    // like click, move mouse, keyboard press, mouse press, drag and drop
+
+    // there are few approach to create these event
+    
+
+    // 1. writing onclick as attribute of an html element as below, which is not a good approach, when you want to scale your program it will create problems
+        // but you can use it in react, it is scalable in react, which is a different library
+        // <li>
+        //     <img
+        //         width="200px"
+        //         id="owl"
+        //         src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+        //         alt="photoshop"
+        //         onclick="alert('Owl')"
+        //     />
+        // </li>
+
+    
+    // 2. selecting the element using getElementById getElementByClassName querySelector and applying onclick on it and giving a function to the right hide of it
+        // onclick works fine here as well
+        // but we can not have access to many informaion exept the onclick event on the element
+        // it give us less features
+        // document.getElementById('owl').onclick = (e) => {
+        //     alert("Owl 2")
+        //     console.log(e)
+        // }
+
+
+    // 3. so we should use addEventListener where we can not access only onclick but we access many more information and have access to many features like prapagation
+        // addEventListener can listen to so many events like click, move mouse, keyboard press, mouse press, drag and drop
+        // addEventListener has third parameter also, it's default value is false, hence many people don't use it alot
+        // but there are some task which will be incomplete without using the third parameter
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //     alert("Owl 2 from addEventListener")
+        //     console.log(e)
+        // }, false)
+
+
+        // 📘 We have to read about the below properties of an event.
+        // like, type, timestamp, defaultPrevented (we can stop default behaviour of any tag in HTML)
+        // target, toElement, srcElement, currentTarget
+        
+        // Read below for Interview purpose
+        // clientX, clientY, screenX, screenY
+
+        // interstig to read
+        // altKey, ctrlKey, shiftKey, keyCode
+
+
+        // Using onclick
+            // 🔸 onclick (Old-school, simple)
+            // ✅ Pros:
+            // Simple and easy to read
+            // Works in all browsers, even ancient ones
+
+            // ❌ Cons:
+            // Only one handler allowed — assigning a new one overwrites the previous one
+            // Limited flexibility (no options for event phases like capture, etc.)
+
+            // document.getElementById('owl').onclick = () => console.log("Handler 1 (onclick)");
+            // document.getElementById('owl').onclick = () => console.log("Handler 2 (onclick)"); // This overwrites the first!
+
+        // Using addEventListener
+            // 🔸 addEventListener (Modern, flexible)
+            // ✅ Pros:
+            // You can attach multiple event listeners to the same element for the same event
+            // Supports advanced options like:
+                // once (only run once)
+                // capture (event capturing phase)
+                // passive (performance boost for touch/scroll events)
+            // Cleaner for modular JavaScript (e.g. using functions or classes)
+
+            // ❌ Cons:
+            // Slightly more verbose (but who cares, right? We're writing clean code 😎)
+
+            // document.getElementById('owl').addEventListener("click", () => console.log("Handler 1 (addEventListener)"));
+            // document.getElementById('owl').addEventListener("click", () => console.log("Handler 2 (addEventListener)")); // Both work!
+
+
+    // 4. attachEvent()
+    // it was used in the era of internet explorer, it is used these days
+
+
+    // 5. onEvent()
+    //  it was used in JQuery, as we have React in recent days
+
+
+    // Event Propagation 
+    // it has two context
+          // 1. Event Bubbling (it's default behaviour of Event Propagation is Event bubling, which come with false value in addEventListener())
+          // 2. Event Capturing (We may use Event Capturing in some scenarios)
+
+    // How the Event Propagation works and how to stop it
+
+      // document.getElementById('images').addEventListener('click', (e) => {
+      //   console.log("clicked inside the ul")
+      // }, false)
+
+      // document.getElementById('owl').addEventListener('click', (e) => {
+      //   console.log("Owl clicked")
+      // }, false)
+
+    // as we have two Event Attached 
+    // one of them is attached to the ul which has li element and each li has image in it
+    // the second event is attached to the owl image which in inside one of the li of the obove same ul
+
+    // when I click inside on any image of the li inside the ul except the owl where another Event is attached, I can see the output of "clicked inside the ul"
+    // but when i click on the owl image which has and event attached to it, which is inside the li of ul which has attached a separate event too, i can see below outputs
+    // output: 
+      // Owl clicked
+      // clicked inside the ul
+
+      // displaying above two message due to the event attched to owl and the event attached to it's parent ul is called bubling, 
+      // in event bubling we can put false as the last parameter of the addEventListener or leave it without any value will work the same
+
+
+        // document.getElementById('images').addEventListener('click', (e) => {
+        //   console.log("clicked inside the ul")
+        // }, true)
+
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //   console.log("Owl clicked")
+        // }, false)
+
+    // give the last paramter of addEventListener true vlaue, is the Event Capturing mode of propagation where the output will be different as below
+    // output: 
+      // clicked inside the ul
+      // Owl clicked
+
+    // we have to give the parent event ture value to change the propagation to Event Capturing mode, where the parent event will take first and the child event will take place later
+
+
+    // To Stop Propagation 
+
+    // when we are in capture mode of Event Propagation (third parameter value is true) the flow of event starts from top to bottom (parent to child elements)
+    // e.stopPropagation() inside the parent Event will stop envoking the child event which is attached to owl, even when we click on owl image
+
+      // document.getElementById('images').addEventListener('click', (e) => {
+      //   console.log("clicked inside the ul")
+      //   e.stopPropagation()
+      // }, true)
+
+      // document.getElementById('owl').addEventListener('click', (e) => {
+      //   console.log("Owl clicked")
+      // }, true)
+
+    // when we are in bubling mode of Event Propagation (third parameter value is false or empty) the flow of event starts from bottom to top (child to parent elements)
+    // e.stopPropagation() inside the child element Event will stop envoking the parent element event which is attached to owl, even when we click on owl image
+
+      // document.getElementById('images').addEventListener('click', (e) => {
+      //   console.log("clicked inside the ul")
+      // }, false)
+
+      // document.getElementById('owl').addEventListener('click', (e) => {
+      //   console.log("Owl clicked")
+      //   e.stopPropagation()
+      // }, false)
+
+      // 👉 stopPropagation() only stops propagation within the current phase — it does not affect other phases.
+
+      // 1. In bubbling mode:
+      // If the child element has a listener in bubbling phase, and you call e.stopPropagation() in that child’s handler, 
+      // it will prevent the event from bubbling up to all ancestor listeners that are also in bubbling mode.
+      // However, it does not affect ancestor listeners in the capturing phase.
+
+      // 2. In capturing mode:
+      // If a parent element has a listener in capturing phase, and you call e.stopPropagation() inside that parent's handler, 
+      // it will prevent the event from continuing down to any child elements that also have capturing listeners.
+      // But it does not stop bubbling-phase listeners from firing when the event comes back up.
+  
+
+      // document.getElementById('google').addEventListener('click', (e) => {
+      //   e.preventDefault();
+      //   // const defaultBehaviour = e.defaultPrevented // if we have e.preventDefault(), then e.defaultPrevented value will be true, otherwise false
+      //   // console.log("Defalut Behaviour Value :",defaultBehaviour)
+      //   console.log('Google Clicked')
+      // }, false)
+
+
+    const ulElement = document.querySelector('#images').addEventListener('click', (e) => {
+        // console.log(e.target) // give us the target of where click happens
+        // console.log(e.target.parentNode) // give us the parent node of the target element where click happens
+        // console.log(e.target.tagName) // give us the tag name img, li, ul
+
+        if(e.target.tagName === "IMG"){
+          console.log(e.target.id)
+          let removeIt = e.target.parentNode
+          removeIt.remove(); // it remove the li
+        }
+
+        // removeIt.parentNode.removeChild(removeIt) // gets the parentNode ul and then remove it's child which is li
+    })
+
+  </script>
+</html>
