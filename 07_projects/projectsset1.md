@@ -6,7 +6,7 @@
 
 # Solution code
 
-## Project 1
+## Project 1 Solution
 
 ```javascript
     const button = document.querySelectorAll(".button")
@@ -24,7 +24,7 @@
 
 ```
 
-## Project 2
+## Project 2 Solution
 
 ```javascript
 
@@ -59,7 +59,7 @@ form.addEventListener('submit', (event) => {
 
 ```
 
-## Project 3
+## Project 3 Solution
 
 ```javascript
 
@@ -72,7 +72,7 @@ form.addEventListener('submit', (event) => {
 
 ```
 
-## Project 4
+## Project 4 Solution
 
 ```javascript
 
@@ -162,7 +162,34 @@ form.addEventListener('submit', (event) => {
 ```
 
 
-## Project 5
+## Project 5 Solution
+
+```javascript
+
+  const insert = document.querySelector('#insert')
+
+  window.addEventListener('keydown', function(e){
+    insert.innerHTML = `
+      <div class='color'>
+        <table>
+          <tr>
+            <th>Key</th>
+            <th>Keycode</th>
+            <th>Code</th>
+          </tr>
+          <tr>
+            <td>${e.key === " " ? "Space" : e.key}</td>
+            <td>${e.keyCode}</td>
+            <td>${e.code}</td>
+          </tr>
+        </table>
+      </div>
+    `
+  })
+
+```
+
+## Project 6 Solution
 
 ```javascript
 
