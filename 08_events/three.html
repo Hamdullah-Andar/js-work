@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+    <h1>setInveral with small task to do</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setInterval will run continuously after the time Interval as the second parameter
+        // setInterval(() => {
+        //     console.log("Ahmad", Date.now())
+        // }, 1000)
+    
+    // We can keep the handler/callback/function outside and pass the reference to the setInterval() function as the first parameter
+        // const sayDate = () => {
+        //     console.log("Ahmad", Date.now())
+        // }
+        // setInterval(sayDate, 1000)
+
+    // We can keep the handler/callback/function outside and pass the reference to the setInterval() function as the first parameter
+    // We can also pass a string as the third parameter of setInterval() and take it as a paramter to setInterval() handler which is written outside of the setInterval()
+    // We can pass multiple aurgument to the setInterval() and pass it the callbackFn which is create outside the setInterval(), one by one
+    // We can accept one or many parameter in callbackfn from the many arguements of setInterval
+        // const sayDate = (str, emoji) => {
+        //     console.log(str, emoji, Date.now())
+        // }
+        // setInterval(sayDate, 1000, "Salam", "👋")
+
+    // We can also stop the setInterval() using clearInterval() which accept setInterval() reference to stop it
+    // below the setInterval() starts and stop it immediatly using the clearInterval(), which should not be like this
+        // const sayDate = (str, emoji) => {
+        //     console.log(str, emoji, Date.now())
+        // }
+        // const setIntervalReference = setInterval(sayDate, 1000, "Salam", "👋")
+        // clearInterval(setIntervalReference)
+
+    // We can add envent listerner to start and stop button to start and stop the setInterval() execution
+        const sayDate = (str, emoji) => {
+            console.log(str, emoji, Date.now())
+        }
+        let setIntervalReference = null
+        const stopEventRef = function() {
+            if(setIntervalReference !== null){
+                clearInterval(setIntervalReference)
+                setIntervalReference = null
+                console.log("setInterval Stopped")
+            }
+        }
+        const stopButton = document.querySelector('#stop').addEventListener('click', stopEventRef)
+        const startEventRef = function(){
+            if(setIntervalReference === null){
+                setIntervalReference = setInterval(sayDate, 1000, "Salam", "👋")
+                console.log("setInterval Started")
+            }
+        }
+        const startButton = document.querySelector('#start').addEventListener('click', startEventRef)
+</script>
+</html>
