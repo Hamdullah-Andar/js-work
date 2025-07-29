@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Out</title>
+</head>
+<body>
+    <h1>setTimeOut and setInterval</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout is a method and it calls an API also
+    // setTimeout is accessable through browswers
+    // it is not part the core part of JavaScript functionality
+    // clearTimeout() and clearInterval() is also a part of setTimeout() and setInterval()
+    
+    // setTimeout() recienve a handler as it's first parameter
+    // handler, callback, function are almost the same
+    // handler is a function, which does not have a name, 
+    // it may also the case the function is written somewhere else, and it's refernce is used as a handler in setTimeout()
+    
+    // setTimeout() second parameter is timeout, which is number in miliseconds
+
+    // setTimeout() as it's name indicates, give some specific amount of time, then i'll execute your task once
+
+        // setTimeout(() => {
+        //     console.log("Ahmad 1")
+        // }, 2000)
+
+        // // we can also used reference of a function in setTimeout() as below
+        // const sayName = () => {
+        //     console.log("Ahmad 2")
+        // }
+        // setTimeout(sayName, 2000)
+
+        // // we can change a text within setTimeout() 
+        // const changeText = () => {
+        //     document.querySelector('h1').innerHTML = "best JS Series"
+        // }
+        // setTimeout(changeText, 2000)
+    
+        // // we can also used clearTimeout() as below to stop setTimeout() execution
+        // // clearTimeout() accept reference of setTimeout() as parameter
+
+        // const changeText = () => {
+        //     document.querySelector('h1').innerHTML = "Best JS series"
+        // }
+        // // timeOutReference is the reference of below setTimeout()
+        // const timeOutReference = setTimeout(changeText, 2000)
+        // clearTimeout(timeOutReference)
+        // // in above example we have used setTimeout() and used clearTimeout() immediatly after it, 
+        // // which clear the setTimeout() executing it within the given time in setTimeout(), which should not be done this way
+
+        // we can add and Event Listner on a button, clicking on it should stop the setTimeout() execution
+        const changeText = () => {
+            document.querySelector('h1').innerHTML = "Best JS series"
+            console.log("Timeout Executed")
+        }
+        const timeOutReference = setTimeout(changeText, 2000)
+        const stopTimeout = () => {
+            clearTimeout(timeOutReference)
+            console.log("Timeout Stopped")
+        }
+        const stopButton = document.querySelector('#stop')
+        stopButton.addEventListener('click', stopTimeout)
+
+    // setInterval() as it's name suggest, I'll execute within the time interval continuously
+
+</script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Explanation</title>
+</head>
+<body>
+    <h1>Async Code</h1>
+    <p>Covering below topic will enable you to learn promises</p>
+    <p>Covering below topic will enable you to learn Async await</p>
+    <p>Covering below topic will enable you to learn some interview answer</p>
+    <p>Covering below topic will enable you to learn to code better</p>
+
+    <h1>JavaScript default Behaviour</h1>
+    <p>JavaScript in Syncronoun Language by default</p>
+    <p>Syncronoun means that code will run one after the other</p>
+    <p>by involving some Extra thing we can make some exception</p>
+    <p>JavaScript is Single Threaded</p>
+    <p>JavaScript is slow comparitivley to multithreaded languages</p>
+    <p>JavaScript will not make you feel it to be Slow due to single Threaded behavoir</p>
+    <p>As it diligate things and call them back later</p>
+    <p>Using JavaScript Engine alone will make things slower as it is single threaded</p>
+    <p>The good news as we can find Javascript Engine alone</p>
+    <p>We can find JavaScript Engine in a run time evnironment, like browsers, nodeJs </p>
+    <p>JavaScript Engine is not use alone, it is used in a runtime environment: like Browsers, NodeJS</p>
+
+    <h1>Executaion Context</h1>
+    <p>Executaion Context run JavaScript codes one by one</p>
+    <p>the Executaion happens as a single Thread</p>
+    <p>Completing previous step is compulsory to begin new step</p>
+    <p>the next line will get executed when the previous line finishes execution</p>
+    <p>Each operation waits for the last one to complete it's execution before starting it's execution </p>
+    <p>and we have Call Stack and Memory Heap too in execution context as discussed earlier</p>
+
+    <h1>Blocking vs Non Blocking Code</h1>
+    <p>Blocking code blockes the flow of the program</p>
+    <p>Example: when I tell you to wait for me till i bring a glass of water for you, you do nothing untill i bring water for you</p>
+    <p>Non Blocking code do not blockes the flow of the program</p>
+    <p>Example: when I tell you to continue your work i'll bring a glass of water for you, you do continue your work during the time, i bring water for you</p>
+    <p>while reading file, our program can not read the directly, for reading a file we give the context to kernal, then kernal access that file, and reads it, then executaion is given back to the program whihc requeste reading the file</p>
+    <p>Kernal also complete our file reading request where ever complete all the task which was requested earlier then us</p>
+    <p>Reading a file the Syncronoun or sync way will block the your program execution untill file reading is completed</p>
+    <p>We can not file access in browser but we have file access in NodeJs</p>
+    <p>While reading Async file, the program continue it's execution, when reading the file is completed the program will get notified</p>
+    <p>Blocking and Non Blocking has it's own use cases</p>
+    <p>None Blocking is not always good, in case when you want to store a user data, and we give the user success message, some error might occur while saving the user data, so non blocking in not a good option in such cases</p>
+    <p>Blocking is going to be good option for stroing user information in database, and notify the user after successfully saving user data in database</p>
+
+    <h1>JavaScript Engine</h1>
+    <p>Alone JavaScript Engine is made of <em>Head Memory</em> and <em>Call Stack, that is it. that is why it was covered in Execution Context lesson</em></p>
+    <p>In Other Execution Environment like Bowsers, NodeJS, Deno we don't have JavaScript Engine alone</p>
+
+    <h1>Web API</h1>
+    <p>Web API is found in Web Browsers, where we can access to DOM</p>
+    <p>If we have Node Environment, we can not have DOM</p>
+
+    <h1>Task Queue</h1>
+    <p>Task Queue makes JavaScript fast and Asyncronouis</p>
+   
+    <h1>Promises</h1>
+    <p>In promises we have a separate Queue, which is also called <em>High Priority/Promises</em> Queue</p>
+
+    <h1>Overview</h1>
+    <p>We a program Executes</p>
+    <p>A call Stack is created for it</p>
+    <p>Inside the Call Stack, Global Executaion Context is created</p>
+    <p>And function are loaded one by one</p>
+    <p>When the function executaion finishes, they are unloaded from the call stack</p>
+    <p>When writing Async Code, we need a mecanisim, where we can tell that please do this work and you can notified me about completing this work later. like <em>setTimeOut(), setInterval()</em></p>
+    
+    <p>We can find setTimeOut in Web API or Node API</p>
+    <p>When we try to use the setTimeOut() function and it's loaded in the Call Stack</p>
+    <p>Then the setTimeOut function moves from Call Stack to Web API</p>
+    <p>As it is setTimeOut() function, it tell the program, you continue your execution, I'll inform you base on the given time in setTimeOut()</p>
+    <p>The setTimeOut is Registered in <em>Registerd Call Back</em></p>
+    <p>All the Event are Registered in <em>Register Call Back</em> like: button click, setTimeOut, setInterval, Load, remove, show, mouse hover</p>
+    <p>Register Call Back, Register all those above events, as they all are async, they does not execute immediatly</p>
+
+    <p>When it is time to execute an Event, like button event or setTimeOut, "Cal Back" from "Register Call Back" will put in the Task Queue</p>
+    <p>Task Queue adds "Call Back" to Call Stack</p>
+
+    <h1>Tricky Question</h1>
+    <p>will setTimeOut, with Zero (0), Execute immediatly or it will Go throught The Call Stack, Web API and Task Queue and put back it to Call Stack</p>
+    <p>Answer: it will go throught The Call Stack, Web API and Task Queue and put back it to Call Stack</p>
+
+    <h1>Relativley New APIs in JavaScript</h1>
+    <p>like fetch API</p>
+    <p>It work the same as Task Queue, it goes throught The Call Stack, Web API and Task Queue and put back it to Call Stack</p>
+    <p>In fetch we gets the consept of Promises, do this work later, tell me when it is successful or failed</p>
+    <p>but this Queue is separate Queue, it is a Queue of Promises, and is a High Proiority Queue</p>
+
+</body>
+</html>
