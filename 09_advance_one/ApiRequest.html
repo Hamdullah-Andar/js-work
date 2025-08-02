@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body>
+    <h1>1: Public API</h1>
+    <p>Below are some Public APIs</p>
+    <p>github API</p>
+    <p>https://api.github.com/users/Hamdullah-Andar</p>
+    <p>Random User</p>
+    <p>https://randomuser.me/</p>
+    <p>Online Formatter to format API respone </p>
+    <p>https://jsonformatter.org/</p>
+    <p>We can use above public API and use it's data</p>
+
+    <h1>2: fetch API</h1>
+    <p>Fetch has been introduced in 2015</p>
+    <p>Before fetch API was Introduced, XMLhttpRequest was used for API request. it is very intersting and very powerfull</p>
+    <p>As XMLhttpRequest is old way hence not many people used and know it now</p>
+    <p>It has been used in many framework right now too</p>
+    <p>XMLhttpRequest was used in Ajax programming</p>
+    <p>Ajax stands for Asynchronous and XML programming Language</p>
+    <p>who know Ajax, thier Asynchronous programming is soo good right now</p>
+
+    <p>We have 5 states in XMLhttpRequest</p>
+    <p><em>0:</em>Vlaue is: 0, State is: UNSENT, Description: Client has been created, open() not called yet (it means request is not sent yet)</p>
+    <p><em>1:</em>Vlaue is: 1, State is: OPENED, Description: open() has been called (it means request is sent)</p>
+    <p><em>2:</em>Vlaue is: 2, State is: HEADERS_RECEIVED, Description: send() has been called and headers and status are available (it means the header and status are available)</p>
+    <p><em>3:</em>Vlaue is: 3, State is: LOADING, Description: Downloading; responseText holds partial data. (Everything is maintained through state (same in react, it is maintainded through state), whether data is received completely or partially)</p>
+    <p><em>4:</em>Vlaue is: 4, State is: DONE, Description: The Operation is complete. (the Data with status is send, you know what to do with it)</p>
+    
+</body>
+<script>
+    // Ajax Request, through which we can send and recieve data
+    // it is not used alot now, but we will used for our own knowledge
+    requestURL = 'https://api.github.com/users/Hamdullh-Andar'
+    const xhr = new XMLHttpRequest() // creeat an object of XMLHttpRequest()
+    xhr.open('GET', requestURL) // open does not get called automticlly
+    // console.log(xhr.readyState) // it tell us current status of the request
+    xhr.onreadystatechange = function(){ // onreadystatechange continously monitor the request state. hence it is asyncronous which get called on any change in state
+        console.log(xhr.readyState)
+        if(xhr.readyState === 4){
+            // const data = this.responseText // we console the reposne in current context. hence we used this keyword
+            // console.log(data.followers) // we get followers from responseText which is stored in data 
+            // we will get undefined which console the data.followers because most of the time the response we is in sting format 
+            // console.log(typeof data) // Sting    
+            const data = JSON.parse(this.responseText) // converts the sting to JSON format which is object
+            console.log(typeof data) // object
+            console.log(data.followers) // give us the followers
+            // Assignemet: create a card and display image and followers data in it
+
+        }
+    }
+    xhr.send() // open get called when we use send()
+
+    
+    // information about console.log() is not available is guidline, standarization, recommendation
+    // console.log is part of javascript and in the sametime it is not
+    // console, document and other is not a part of core javascript. like document means document.getEelemntBydId
+    // core javascript includes arithmetic operation function call and more
+
+    // console.log() is debugger tools, it is browser dev tools, it is inject by javascript run time
+
+
+    // How JavaScript runs: it run in run time environment Like node and browser
+    // NodeJs is implementation of V8 Engine, run javaScript
+    // there are many engine which run javascript, one of them is V8
+    // V8 repository is available in github and it is written in C++.
+    // Javascript actullay runs in C++
+    // it does not mean C++ is best. and javascript is worst. No it's not the case. C++ is core, and javascript is wrapper language on it.
+
+
+    // V8 engine gives us debugging tools, API access. so that we can use and work with it.
+    // console.log() is also availabe and it's implementation is done in V8 Engine, which is given to you by Javascript runtime environment
+    // in V8 repo on github, we can find src. opoen it and read it but it is hard to read and understand
+    // we have API folder inside src folder. but it is not that API, as we said that API can be between systems, this API communicate javascript with C++
+    // inside API we can that how aurgument is passed, how macro gets run, how native gets run.
+
+    // we have d8 folder inside src folder. it is very intersting folder
+    // we have d8-console.cc and d8-console.h
+    // d8-console.cc is actullay console.log(), we get the console.log() from here
+    // we can find WriteToFile() inside d8-console.cc and when the Javascript engine (V8) gets into the browser, which tell the browser to write the console within dev tools of browser inside the console
+    // and the actula implementation of console.log() is void D8Console::Log(...){...}
+
+  
+
+</script>
+</html>
