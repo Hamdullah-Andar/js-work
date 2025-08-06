@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+
+    <h1>About Fetch</h1>
+    <p>fetch was available in browser earlier then it come the nodeJS natively</p>
+    <p>it come to the NodeJs in 2022</p>
+    <p>fetch is very exiting feature in NodeJs</p>
+    <p>Eariler the request was happening using XMLHttpRequest</p>
+
+    <h2>Blog reading about fetch api</h2>
+    <p>In the early days of the web, it was difficult to perform asyncronous request</p>
+    <p>Internet Explorer 5 introduce XMLHttpRequest API in 1998. Initially, XMLHttpRequest was designed to fetch XML data via HTTP, hence the name. Sometime after it was released, however, support for other data formats — primarily JSON, HTML, and plaintext — was added.</p>
+    <p>As the web grow it become difficult to work JS framework like JQuery. the problem occured in tracking states, call back hell, making operation async</p>
+    <p>fetch API was introduce in 2025 as successor to XMLHttpRequest, but it was not included in NodeJS because of below reason</p>
+    <p><span>1. </span> As the fetch API was dependent on Web Brower, and the browser was not availabe on NodeJS</p>
+    <p><span>2. </span> As the fetch API request could be aborted in Web Brower, but it was not availabe on NodeJS untill recently</p>
+    <p>Later NodeJS added their own fetch API natively to NodeJS, previously the HTTP request was happening thruogh <em>request module</em></p>
+    <p>bleow is the syntax of fetch API</p>
+    <pre><code>
+        fetch("http://example.com/api/endpoint")
+            .then((response) => {
+                // Do something with response
+            })
+            .catch((err) => {
+                // Handle error here
+                console.log("Unable to fetch -", err);
+        });
+    </code></pre>
+    <p>The Global fetch() method starts the process of fetching a resource from the network, returning a promise that is fulfilled once the response is available.</p>
+    <p>A fetch() promise only rejects when the request fails, for example, because of a badly-formed request URL or a network error. A fetch() promise does not reject if the server responds with HTTP status codes that indicate errors (404, 504, etc.). Instead, a then() handler must check the Response.ok and/or Response.status properties.</p>
+    <p>Above line mean 404 respone will go to resolve not to reject</p>
+
+    <p>Great question. When using the Fetch API, you can pass two main arguments:</p>
+    <p><span>1. </span>URL (string)</p>
+    <p><span>2. </span>Options object (optional, but powerful)</p>
+    <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+        <th>Option</th>
+        <th>Type</th>
+        <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td><code>method</code></td>
+        <td><code>string</code></td>
+        <td>HTTP method (e.g., <code>"GET"</code>, <code>"POST"</code>, <code>"PUT"</code>, <code>"DELETE"</code>)</td>
+        </tr>
+        <tr>
+        <td><code>headers</code></td>
+        <td><code>object</code></td>
+        <td>HTTP headers (e.g., content type, authorization)</td>
+        </tr>
+        <tr>
+        <td><code>body</code></td>
+        <td><code>string</code></td>
+        <td>Payload for methods like POST or PUT (usually a JSON string)</td>
+        </tr>
+        <tr>
+        <td><code>mode</code></td>
+        <td><code>string</code></td>
+        <td>CORS mode (<code>"cors"</code>, <code>"no-cors"</code>, <code>"same-origin"</code>)</td>
+        </tr>
+        <tr>
+        <td><code>credentials</code></td>
+        <td><code>string</code></td>
+        <td>Whether to include cookies: <code>"omit"</code>, <code>"same-origin"</code>, or <code>"include"</code></td>
+        </tr>
+        <tr>
+        <td><code>cache</code></td>
+        <td><code>string</code></td>
+        <td>Cache mode like <code>"default"</code>, <code>"no-cache"</code>, <code>"reload"</code>, <code>"force-cache"</code>, <code>"only-if-cached"</code></td>
+        </tr>
+        <tr>
+        <td><code>redirect</code></td>
+        <td><code>string</code></td>
+        <td>Redirect behavior: <code>"follow"</code>, <code>"error"</code>, or <code>"manual"</code></td>
+        </tr>
+        <tr>
+        <td><code>referrer</code></td>
+        <td><code>string</code></td>
+        <td>Referrer info: <code>"no-referrer"</code>, <code>"client"</code> (default), or a URL</td>
+        </tr>
+        <tr>
+        <td><code>signal</code></td>
+        <td><code>AbortSignal</code></td>
+        <td>To abort the fetch request (useful for timeouts or cancelling requests)</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <pre><code>
+        fetch("https://api.example.com/data", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer your-token"
+            },
+            body: JSON.stringify({ name: "John", age: 30 }),
+            mode: "cors",
+            credentials: "include",
+            cache: "no-cache",
+            redirect: "follow",
+            referrer: "no-referrer"
+        });
+    </code></pre>
+    <p>below is the documentation which is read by browser and do thier implementation</p>
+    <a href="https://fetch.spec.whatwg.org/#fetch-method">Specification about fetch</a>
+
+    <p>As we have talked earlier that NodeJS has implented it's own fetch API, whihc was availabe in browser first. hence Web API has alot of functionaliy and NodeJS will be trying to add the same functionality to NodeJS natively</p>
+
+    <p>fetch goes to JS Engine through a special Queue which is just use by fetch. it also called as <em>Micro task Queue</em>, <em>Priority Queue</em> <em>fetch Queue</em></p>
+    <p>if there is any task in Priority Queue, it goes to call stack immedialty, and normal Task Queue stops going to call stack</p>
+
+    <p>Fetch works in two parts</p>
+    <p><span>1.</span>Variable and memory data space reserving called Data.</p>
+    <p>it has two array, which we don't have access to modify or add the data, they are private fields</p>
+    <p><span>1.</span>Onfulfilled[] (Onfulfilled is the resolve part of the Promise())</p>
+    <p><span>2.</span>OnRejection[] (OnRejection is the reject part of the Promise())</p>
+
+    <p><span>2.</span>Web Browser or Node API request handling (As NodeJS also has it's own fetch implementation)</p>
+    <p>It handle Web base API or Node base API</p>
+    <p>A network request goes form here, which we can not send directly, we need resources for it, which will be provided by Web API or Node API</p>
+    <p>After creating the network request, the data may go in the network request or it may not go on the network request</p>
+    <p>If the network request go and whatever reponse is recived, it will always go on Onfulfilled array or resolve</p>
+    <p>If the network request failed to go or it was hanged to go, it will always go on OnRejection array or reject</p>
+    <p><span>Remember:</span>All the Error like 404, it will go to Onfulfilled or resolve</p>
+
+    <p>The data which is recieved in the respone of network request is initially undefined</p>
+    <p>Each Onfulfilled or OnRejection has a function which is responsible to put/fulfilled the respone in Data, which is memory reserve in the first part of fetch work section above</p>
+    <p>When the response is put/fulfilled in the Data mermory reserved</p>
+    <p>Data is responsible to put/fulfilled the data in our response varaible where we have store the fetch response</p>
+</body>
+</html>
