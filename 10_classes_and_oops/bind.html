@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    // in the very beginning, we used to write code like this, where react was not even in version 1
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "http://localhost:300"
+
+            // This section is added base on business requirment
+            // document.querySelector('button').addEventListener('click', this.handleClick) // without bind(this) we won't be able to access this.server, but we will have access to this
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this)) // After using bind(this) we can access this.server and this.library, here we have bind or attached all the properties to handleClick function
+            // hence clicking on button we will have access to all the properties
+            // this was how it was done previously, but it is not not done this way right now
+        }
+
+        handleClick(){
+            console.log('Button is Clicked');
+            console.log(this); // we have access to this
+            console.log(this.server); // but we dont have access to this.server
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
