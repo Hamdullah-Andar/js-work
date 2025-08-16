@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <h1>Closure</h1>
+    <ul>
+        <li>we need to solve a problem</li>
+        <li>the problem can be solved with closure</li>
+        <li>to understatnd the closure with need to know lexical scoping</li>
+    </ul>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    // function init(){
+    //     let name = "Mozilla" // name is a local variable created by init
+    //     function displayName(){
+    //         // displayName() is the inner function, that forms the closure
+    //         console.log(name) // use variable diclared in the parent function
+    //     }
+    //     displayName()
+    // }
+    // init()
+
+
+    // function outer(){
+    //     let username = 'Ahmad'
+    //     console.log('Outer secret',secret)
+    //     function inner(){
+    //         let secret = 'my123'
+    //         console.log('Inner',username)
+    //     }
+    //     function innerTwo(){
+    //         console.log('Inner Two',username)
+    //         console.log(secret)
+    //     }
+    //     inner()
+    //     innerTwo()
+    //     // this is an example of lexical scope where inner (child) function has access to outer (parent) function property
+    //     // two sibling function deos not share properties
+    //     // a inner (child) function deos not share properties to outer (parent) function
+    //     // this is called lexical scop
+    // }
+    // outer()
+    // console.log('Too Outer',username)
+
+
+
+    // function makeFunc(){
+    //     const name = 'Mozilla'
+    //     function displayName(){
+    //         console.log(name)
+    //     }
+    //     // when we return displayName function we dont return displayName alone, but we return lexical scope
+    //     // which include displayName function and outer function properties
+    //     // hence when calling makeFunc return lexical scope of it. and we store it inside myFunc, and calling myFunc we can get access to name property also
+    //     return displayName;
+    // }
+    // const myFunc = makeFunc();
+    // myFunc();
+
+</script>
+
+<script>
+    // document.getElementById('orange').onclick = function(){
+    //     document.body.style.backgroundColor = 'orange'
+    // }
+    // document.getElementById('green').onclick = function(){
+    //     document.body.style.backgroundColor = 'green'
+    // }
+
+    function clickHandler(color){
+        // document.body.style.backgroundColor = `${color}` // it will display the final time clickHander is called, but it will not update clicking on the other button
+        
+        // but it will work as below while we are returning a function we returning lexical scope which inclue properties of parent function
+        return function(){
+            document.body.style.backgroundColor = `${color}` // it wil this way
+        }
+    }
+    document.getElementById('green').onclick = clickHandler('green')
+    document.getElementById('orange').onclick = clickHandler('orange')
+</script>
+
+</html>
